@@ -1,0 +1,21 @@
+{
+  "name": "interclip-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "Desktop",
+    "Interclip"
+  ],
+  "author": "Filip Troníček",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^7.1.1"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
