@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, dialog, globalShortcut, ipcMain } = require("electron");
 const shell = require("electron").shell;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -51,12 +51,10 @@ function createWindow() {
   ]);
   Menu.setApplicationMenu(menu);
 
-  const { ipcMain } = require("electron");
-
   // receive message from index.html
-  ipcMain.on("asynchronous-message", (event, arg) => {
-    console.log(arg);
-    axios.get(`http://uni.hys.cz/includes/api?url=${arg}`)
+  ipcMain.on("asynchronous-message", (event, url) => {
+    console.log(url);
+    axios.get(`http://uni.hys.cz/includes/api?url=${url}`)
     .then(res => {
         const code = res.data;
         // send message to index.html
@@ -87,5 +85,3 @@ app.on("activate", () => {
     createWindow();
   }
 });
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
