@@ -1,14 +1,19 @@
 const electron = require('electron');
 const path = require('path');
-const axios = require('axios');
 
+document.querySelector('#submit').addEventListener('click', function() {
 
-function getCode(url) {
-    console.log(url);
-    axios.get(`http://uni.hys.cz/includes/api?url=${url}`)
-        .then(res => {
-            const code = res.data;
-            console.log(code);
-        });
-}
-//getCode('https://coursetro.com/courses/22/Creating-Desktop-Apps-with-Electron-Tutorial')
+    let username = document.getElementById("search-input").value;
+
+    const {ipcRenderer} = require('electron');
+
+    // send username to main.js 
+    ipcRenderer.send('asynchronous-message', username )
+
+    // receive message from main.js
+    ipcRenderer.on('asynchronous-reply', (event, arg) => {
+      console.log(arg);
+
+    });
+
+    });

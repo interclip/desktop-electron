@@ -3,6 +3,8 @@ const shell = require("electron").shell;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
+const axios = require('axios');
+
 
 function createWindow() {
   // Create the browser window.
@@ -48,6 +50,20 @@ function createWindow() {
     }
   ]);
   Menu.setApplicationMenu(menu);
+
+  const { ipcMain } = require("electron");
+
+  // receive message from index.html
+  ipcMain.on("asynchronous-message", (event, arg) => {
+    console.log(arg);
+    axios.get(`http://uni.hys.cz/includes/api?url=${arg}`)
+    .then(res => {
+        const code = res.data;
+        // send message to index.html
+        event.sender.send("asynchronous-reply", code);
+
+    });
+  });
 }
 
 // This method will be called when Electron has finished
