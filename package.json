@@ -1,6 +1,6 @@
 {
   "name": "interclip-desktop",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "main.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "package-mac": "electron-packager . Interclip --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . Interclip --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Interclip\"",
     "package-linux": "electron-packager . Interclip --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "win-install": "node installers/windows/createinstaller.js",
     "postinstall": "electron-builder install-app-deps",
     "build": "electron-builder --linux",
     "release": "electron-builder --linux --publish always"
