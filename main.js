@@ -1,6 +1,7 @@
 const { app, BrowserWindow, Menu, dialog, globalShortcut, ipcMain } = require("electron");
 const shell = require("electron").shell;
-var path = require('path')
+var path = require('path');
+require('electron-reload')(__dirname);
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
@@ -15,7 +16,7 @@ function createWindow() {
     minHeight: 300,
     minWidth: 500,
     icon: path.join(__dirname, 'assets/icons/png/64.png'),
-    frame: false,
+    //frame: false,
     webPreferences: {
       nodeIntegration: true
     },
