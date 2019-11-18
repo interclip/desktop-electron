@@ -17,9 +17,8 @@ jobs:
       with:
         version: ${{ matrix.node_version }}
 
-    - name: yarn install, yarn lint, yarn test, yarn build
+    - name: run tests
       run: |
-        npm start
         package-win
         package-linux
         npm run win-install
