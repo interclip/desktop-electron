@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, dialog, globalShortcut, ipcMain } = require("electron");
 const shell = require("electron").shell;
+var path = require('path')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
@@ -11,10 +12,15 @@ function createWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    minHeight: 300,
+    minWidth: 500,
+    icon: path.join(__dirname, 'assets/icons/png/64.png'),
+    frame: false,
     webPreferences: {
       nodeIntegration: true
     },
     fullscreenable: false,
+    backgroundColor: '#ec991f'
   });
 
   // and load the index.html of the app.
