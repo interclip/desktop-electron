@@ -5,4 +5,7 @@ Keyboard shortcuts:
 
  * Ctrl(Command)+C = copy code
 
-(BETA) Download for Windows [here](https://m.put.re/6s2UHYd5.exe)
+(BETA) Download for Windows (click on image below or download from releases)
+
+
+[ ![](https://s.put.re/DhhSaW8e.png)](https://github.com/aperta-principium/Interclip-desktop/releases/download/v0.0.2/Interclip-install.exe)
