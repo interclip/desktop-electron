@@ -19,6 +19,6 @@ jobs:
 
     - name: run tests
       run: |
-        package-win
-        package-linux
+        npm run package-win
+        npm run package-linux
         npm run win-install
