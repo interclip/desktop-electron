@@ -7,7 +7,10 @@
     "start": "electron .",
     "package-mac": "electron-packager . Interclip --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . Interclip --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Interclip\"",
-    "package-linux": "electron-packager . Interclip --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
+    "package-linux": "electron-packager . Interclip --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "electron-builder --mac --windows --linux",
+    "release": "electron-builder --mac --windows --linux --publish always"
   },
   "keywords": [
     "Desktop",
@@ -25,5 +28,21 @@
   "dependencies": {
     "axios": "^0.19.0",
     "mousetrap": "^1.6.3"
+  },
+  "build": {
+    "appId": "com.aperta-principium.interclip",
+    "productName": "Interclip",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "icon": false
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility"
+    }
   }
 }

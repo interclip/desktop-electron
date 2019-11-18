@@ -48,13 +48,16 @@ document
 var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
 var regex = new RegExp(expression);
 
-
-document.getElementById("body").onfocus = function() {
-  console.log("Focus");
+function getClipboard() {
   var t = clipboard.readText();
   if (t.match(regex)) {
     sendURL(t);
     document.getElementById("search-input").value = clipboard.readText();
-
   } 
+}
+
+document.getElementById("body").onfocus = function() {
+  console.log("Focus");
+ getClipboard();
 };
+getClipboard();
