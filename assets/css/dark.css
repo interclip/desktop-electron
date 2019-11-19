@@ -1,5 +1,6 @@
 @media (prefers-color-scheme: dark) {
     body, .full-screen, #code {
+      transition-duration: 500ms;
       background: #444 !important;
       color: #e4e4e4 !important;
     }

@@ -1,7 +1,7 @@
 const electron = require("electron");
 const path = require("path");
 const Mousetrap = require("mousetrap");
-const { clipboard } = require("electron");
+const { clipboard, remote, ipcRenderer } = require("electron");
 
 function isKeyPressed(event, expectedKey, expectedCode) {
   const code = event.which || event.keyCode;
@@ -12,8 +12,6 @@ function isKeyPressed(event, expectedKey, expectedCode) {
   return false;
 }
 function sendURL(urlInput = document.getElementById("search-input").value) {
-  const { ipcRenderer } = require("electron");
-
   // send username to main.js
   ipcRenderer.send("asynchronous-message", urlInput);
 

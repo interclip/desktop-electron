@@ -7,11 +7,35 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/clip.css">
     <link rel="stylesheet" href="../assets/css/dark.css">
-
+    <link rel="stylesheet" href="../assets/css/title-bar.css">
 
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
-
+<div class="title-bar">
+    <div class="menu-button-container">
+      <img src="../assets/icons/png/64.png" 
+        id="menu-button"
+        class="menu-button"
+      />
+    </div>
+    <div class="app-name-container">
+      <p>Interclip Desktop</p>
+    </div>
+    <div class="window-controls-container">
+      <button 
+        id="minimize-button"
+        class="minimize-button"
+      />
+      <button 
+        id="min-max-button"
+        class="min-max-button"
+      />
+      <button 
+        id="close-button"
+        class="close-button"
+      />
+    </div>
+  </div>
 <body id="body">
     <center>
     <span class="center code" id="code"></span>
@@ -23,6 +47,7 @@
     </div>
     </div>
     </div>
+    <script src="titlebar.js"></script>
     <script src="clip.js"></script>
 </body>
 
