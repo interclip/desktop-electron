@@ -6,6 +6,7 @@ const {
   globalShortcut,
   ipcMain
 } = require("electron");
+
 const shell = require("electron").shell;
 var path = require("path");
 // Keep a global reference of the window object, if you don't, the window will
@@ -33,6 +34,7 @@ function createWindow() {
 
   win.once("ready-to-show", () => {
     win.show();
+
   });
 
   // and load the index.html of the app.
@@ -75,6 +77,9 @@ function createWindow() {
       // send message to index.html
       event.sender.send("asynchronous-reply", code);
     });
+  });
+  ipcMain.on('show-error-box', (event, arg) => {
+    dialog.showErrorBox('Oops, this shouldn\'t have happened!', 'Your URL is probably not in the right format. Remember to write http/https.');
   });
 }
 
