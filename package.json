@@ -1,6 +1,6 @@
 {
   "name": "interclip-desktop",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Interclip for desktop",
   "main": "main.js",
   "scripts": {
