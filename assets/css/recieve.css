@@ -1,0 +1,11 @@
+#code {
+    margin-top: 20vh;
+    transition-duration: 400ms;
+    text-align: center;
+    box-sizing: border-box;
+    width: 80vw;
+    height: 40vh;
+    margin-left: 10vw;
+    font-size: 25vw;
+    border: 4px solid #ffffff;
+}

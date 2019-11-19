@@ -4,6 +4,10 @@ html, body {
 
 }
 body {
-    -ms-overflow-style: scrollbar;
-    -webkit-app-region:drag;
-}
+    font-family: "Palanquin", sans-serif;
+    background-color: #ff9800;
+    color: #fff;
+    margin: 0;
+    max-height: 100vh !important;
+    max-width: 100vw !important;
+  }
