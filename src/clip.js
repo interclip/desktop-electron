@@ -11,15 +11,22 @@ function isKeyPressed(event, expectedKey, expectedCode) {
   }
   return false;
 }
+
+var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+var regex = new RegExp(expression);
+
 function sendURL(urlInput = document.getElementById("search-input").value) {
   // send username to main.js
-  ipcRenderer.send("asynchronous-message", urlInput);
-
+  var t = urlInput;
+  if (t.match(regex)) {
+    ipcRenderer.send("asynchronous-message", urlInput);
+  }
   // receive message from main.js
+
   ipcRenderer.on("asynchronous-reply", (event, code) => {
     if (code != "") {
       document.getElementById("code").innerHTML =
-        "Code: <span id='theCode'>" + code + "</span>";
+        "code: <span id='theCode'>" + code + "</span>";
     }
   });
 }
@@ -40,22 +47,20 @@ document
     if (isKeyPressed(event, "Enter", 13)) {
       event.preventDefault();
       sendURL();
-    } else {
     }
   });
-var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
-var regex = new RegExp(expression);
 
 function getClipboard() {
+
   var t = clipboard.readText();
   if (t.match(regex)) {
     sendURL(t);
     document.getElementById("search-input").value = clipboard.readText();
-  } 
+  }
 }
 
 document.getElementById("body").onfocus = function() {
-  console.log("Focus");
- getClipboard();
+  //console.log("Focus");
+  getClipboard();
 };
 getClipboard();
