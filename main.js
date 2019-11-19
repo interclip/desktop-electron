@@ -21,7 +21,8 @@ function createWindow() {
     minHeight: 400,
     minWidth: 500,
     icon: path.join(__dirname, "assets/icons/png/64.png"),
-    frame: false,
+    frame: false, // for Windows
+    titleBarStyle: 'hidden', // for MacOS
     webPreferences: {
       nodeIntegration: true
     },
