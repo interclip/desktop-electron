@@ -12,8 +12,6 @@ function placeHolder() {
   
     if (codeInput.setAttribute("placeholder", hash)) {
       console.log("Placed holder");
-    } else {
-      console.log("fuck me");
     }
   }
 
