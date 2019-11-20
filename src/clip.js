@@ -19,6 +19,8 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   // send username to main.js
   var t = urlInput;
   if (t.match(regex)) {
+    console.log("Sending shit");
+
     ipcRenderer.send("asynchronous-message", urlInput);
   } else {
     ipcRenderer.send("show-error-box");
@@ -30,6 +32,9 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
     if (code != "") {
       document.getElementById("code").innerHTML =
         "code: <span id='theCode'>" + code + "</span>";
+    } else {
+      console.log("Code is not valid");
+      alert(code);
     }
   });
 }
