@@ -48,7 +48,7 @@ function createWindow() {
   win.loadFile("src/clip.html");
 
   // Open the DevTools.
-  //win.webContents.openDevTools();
+  ////win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on("closed", () => {
@@ -80,9 +80,17 @@ function createWindow() {
   ipcMain.on("asynchronous-message", (event, url) => {
     console.log(url);
     axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then(res => {
-      const code = res.data;
+      let code = res.data;
       // send message to index.html
       event.sender.send("asynchronous-reply", code);
+    });
+  });
+  ipcMain.on("recieve-code", (event, code) => {
+    console.log(code);
+    axios.get(`http://unidev.hys.cz/includes/get-api?user=${code}`).then(res => {
+      let url = res.data;
+      // send message to index.html
+      event.sender.send("url-reply", url);
     });
   });
   ipcMain.on('show-error-box', (event, arg) => {

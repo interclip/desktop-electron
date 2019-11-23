@@ -35,8 +35,8 @@ function sendCode(urlInput = codeInput.value) {
   
     ipcRenderer.on("url-reply", (event, code) => {
       if (code != "") {
-        document.getElementById("code").innerHTML =
-          "url: <span id='theCode'>" + code + "</span>";
+        document.getElementById("result").innerHTML =
+          "<span id='theCode'>" + code + "</span>";
       } else {
           alert("Got " + code);
       }
