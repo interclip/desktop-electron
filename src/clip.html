@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Interclip for Desktop</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/clip.css">
-    <link rel="stylesheet" href="../assets/css/dark.css">
-    <link rel="stylesheet" href="../assets/css/title-bar.css">
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/clip.css" />
+    <link rel="stylesheet" href="../assets/css/dark.css" />
+    <link rel="stylesheet" href="../assets/css/title-bar.css" />
 
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-</head>
-<div class="title-bar">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+  </head>
+  <div class="title-bar">
     <div class="menu-button-container">
-      <img src="../assets/icons/png/64.png" 
-        id="menu-button"
-        class="menu-button"
-      />
+      <a href="get.html">
+        <img
+          src="../assets/icons/png/64.png"
+          id="menu-button"
+          class="menu-button"
+        />
+      </a>
     </div>
     <div class="app-name-container">
       <p>Interclip Desktop</p>
     </div>
     <div class="window-controls-container">
-      <button 
-        id="minimize-button"
-        class="minimize-button"
-      />
-      <button 
-        id="min-max-button"
-        class="min-max-button"
-      />
-      <button 
-        id="close-button"
-        class="close-button"
-      />
+      <button id="minimize-button" class="minimize-button" />
+      <button id="min-max-button" class="min-max-button" />
+      <button id="close-button" class="close-button" />
     </div>
   </div>
-<body id="body">
+  <body id="body">
     <center>
-    <span class="center code" id="code"></span>
+      <span class="center code" id="code"></span>
     </center>
     <div name="urlform" id="content">
-
-        <input type="text" name="input" style="text-align:center;" class="input" id="search-input" autofocus> 
-        
+      <input
+        type="text"
+        name="input"
+        style="text-align:center;"
+        class="input"
+        id="search-input"
+        autofocus
+      />
     </div>
 
     <script src="titlebar.js"></script>
     <script src="clip.js"></script>
-</body>
-
+  </body>
 </html>
