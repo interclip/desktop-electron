@@ -1,5 +1,5 @@
 {
-  "name": "Interclip",
+  "name": "interclip",
   "version": "0.1.0",
   "description": "Interclip for desktop",
   "repository": "https://github.com/aperta-principium/Interclip-desktop",
@@ -10,10 +10,8 @@
     "package-win": "electron-packager . Interclip --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Interclip\"",
     "package-linux": "electron-packager . Interclip --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
     "win-install": "node installers/windows/createinstaller.js",
-    "snap-install": "npx electron-installer-snap --src=release-builds/Interclip-linux-x64",
-    "postinstall": "electron-builder install-app-deps",
-    "build": "electron-builder --linux",
-    "release": "electron-builder --linux --publish always"
+    "create-debian-installer": "electron-installer-debian --src release-builds/Interclip-linux-x64/ --arch amd64 --config debian.json"
+
   },
   "keywords": [
     "Desktop",
