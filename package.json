@@ -1,6 +1,6 @@
 {
   "name": "interclip-desktop",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Interclip for desktop",
   "repository": "https://github.com/aperta-principium/Interclip-desktop",
   "main": "main.js",
