@@ -1,7 +1,4 @@
 node_modules
 desktop.ini
 release-builds
-out
-dist
 package-lock.json
-
