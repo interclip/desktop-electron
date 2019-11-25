@@ -5,6 +5,10 @@ const { clipboard, remote, ipcRenderer, dialog } = require("electron");
 
 codeInput = document.getElementById("code");
 
+function openExtLink(url) {
+  shell.openExternal(url);
+}
+
 function isKeyPressed(event, expectedKey, expectedCode) {
     const code = event.which || event.keyCode;
   
@@ -36,13 +40,12 @@ function sendCode(urlInput = codeInput.value) {
     ipcRenderer.on("url-reply", (event, code) => {
       if (code != "") {
         document.getElementById("result").innerHTML =
-          "<span id='theCode'>" + code + "</span>";
+          "<span id='theCode'>" + code + "</span>  <br> <span id='openExt' style='display: none' onClick='openExtLink("+code+")'>Open in browser</span>";
       } else {
           alert("Got " + code);
       }
     });
   }
-
 
 setInterval(function() {
   placeHolder();
@@ -59,4 +62,14 @@ document
       event.preventDefault();
       sendCode();
     }
+  });
+  Mousetrap.bind(["command+c", "ctrl+c"], function() {
+    clipboard.writeText(
+      document.getElementById("theCode").innerHTML,
+      "selection"
+    );
+    console.log(`Copied: ${clipboard.readText("selection")}`);
+    // return false to prevent default browser behavior
+    // and stop event from bubbling
+    return false;
   });
