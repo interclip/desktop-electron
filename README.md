@@ -11,9 +11,10 @@ Keyboard shortcuts:
 ## Downloads
 
 * Linux (.AppImage for Linux Ubuntu, RedHat, Debian, Fedora, Arch, whatever)
-
-For more support documentation, visit [appimage.org](https://appimage.org/)
+(for more support documentation, visit [appimage.org](https://appimage.org/))
+![installing on Ubuntu](https://s.put.re/QKiEEMki.gif)
 
 * Windows (.exe file)
+![installing on Windows](https://s.put.re/uKny4NFr.gif)
 
 * macOS (.dmg)
