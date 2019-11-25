@@ -3,10 +3,7 @@ const path = require("path");
 const Mousetrap = require("mousetrap");
 const { clipboard, remote, ipcRenderer, dialog, shell } = require("electron");
 
-function openExtLink(url) {
-  shell.openExternal(url);
 
-}
 
 function isKeyPressed(event, expectedKey, expectedCode) {
   const code = event.which || event.keyCode;
@@ -36,7 +33,7 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   ipcRenderer.on("asynchronous-reply", (event, code) => {
     if (code != "") {
       document.getElementById("code").innerHTML =
-        "code: <span id='theCode'>" + code + "</span> <br> <span id='openExt' onClick='openExtLink("+code+")'>Open in browser</span>";
+        "code: <span id='theCode'>" + code + "</span>";
     } else {
       console.log("Code is not valid");
       alert(code);
