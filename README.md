@@ -11,6 +11,7 @@ Keyboard shortcuts:
 ## Downloads
 
 * Linux (.AppImage for Linux Ubuntu, RedHat, Debian, Fedora, Arch, whatever)
+
 For more support documentation, visit [appimage.org](https://appimage.org/)
 
 * Windows (.exe file)
