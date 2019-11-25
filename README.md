@@ -3,7 +3,7 @@ Interclip desktop client
 
 Keyboard shortcuts:
 
- * Ctrl(Command)+C = copy code
+ * ```Ctrl(Command)+C``` = copy code
 
 (BETA) Download for Windows (click on image below or download from releases)
 
