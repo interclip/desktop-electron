@@ -8,4 +8,11 @@ Keyboard shortcuts:
 (BETA) Download for Windows (click on image below or download from releases)
 
 
-[ ![](https://s.put.re/DhhSaW8e.png)](https://github.com/aperta-principium/Interclip-desktop/releases/download/v0.0.5/Interclip-install.exe)
+## Downloads
+
+* Linux (.AppImage for Linux Ubuntu, RedHat, Debian, Fedora, Arch, whatever)
+For more support documentation, visit [appimage.org](https://appimage.org/)
+
+* Windows (.exe file)
+
+* macOS (.dmg)
