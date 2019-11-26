@@ -48,7 +48,9 @@ function createWindow() {
   win.loadFile("src/clip.html");
 
   // Open the DevTools.
-  ////win.webContents.openDevTools();
+  //win.webContents.openDevTools();
+
+  app.setUserTasks([]);
 
   // Emitted when the window is closed.
   win.on("closed", () => {
