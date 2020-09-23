@@ -3,8 +3,6 @@ import path from "path";
 import { bind } from "mousetrap";
 import { clipboard, ipcRenderer } from "electron";
 
-
-
 function isKeyPressed(event, expectedKey, expectedCode) {
   const code = event.which || event.keyCode;
 
@@ -21,12 +19,9 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   // send username to main.js
   const t = urlInput;
   if (t.match(exregex)) {
-    console.log("Sending shit");
-
     ipcRenderer.send("asynchronous-message", urlInput);
   } else {
     ipcRenderer.send("show-error-box");
-
   }
   // receive message from main.js
 
@@ -41,18 +36,18 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
 }
 
 bind(["command+c", "ctrl+c"], () => {
-    clipboard.writeText(
-      document.getElementById("theCode").innerHTML,
-      "selection"
-    );
-    console.log(`Copied: ${clipboard.readText("selection")}`);
-    // return false to prevent default browser behavior
-    // and stop event from bubbling
-    return false;
-  });
+  clipboard.writeText(
+    document.getElementById("theCode").innerHTML,
+    "selection"
+  );
+  console.log(`Copied: ${clipboard.readText("selection")}`);
+  // return false to prevent default browser behavior
+  // and stop event from bubbling
+  return false;
+});
 document
   .getElementById("search-input")
-  .addEventListener("keydown", function(event) {
+  .addEventListener("keydown", function (event) {
     if (isKeyPressed(event, "Enter", 13)) {
       event.preventDefault();
       sendURL();
@@ -60,7 +55,6 @@ document
   });
 
 function getClipboard() {
-
   const t = clipboard.readText();
   if (t.match(exregex)) {
     sendURL(t);
