@@ -31,7 +31,7 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   // receive message from main.js
 
   ipcRenderer.on("asynchronous-reply", (event, code) => {
-    if (code != "") {
+    if (code !== "") {
       document.getElementById("code").innerHTML =
         "code: <span id='theCode'>" + code + "</span>";
     } else {
