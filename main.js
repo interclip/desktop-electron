@@ -3,7 +3,6 @@ const {
   BrowserWindow,
   Menu,
   dialog,
-  globalShortcut,
   ipcMain
 } = require("electron");
 
