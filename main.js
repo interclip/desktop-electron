@@ -94,7 +94,7 @@ function createWindow() {
       event.sender.send("url-reply", url);
     });
   });
-  ipcMain.on('show-error-box', (event, arg) => {
+  ipcMain.on('show-error-box', (_event, _arg) => {
     dialog.showErrorBox('Oops, this shouldn\'t have happened!', 'Your URL is probably not in the right format. Remember to write http/https.');
   });
 }
