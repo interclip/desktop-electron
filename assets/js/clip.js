@@ -61,7 +61,7 @@ document
 
 function getClipboard() {
 
-  var t = clipboard.readText();
+  const t = clipboard.readText();
   if (t.match(regex)) {
     sendURL(t);
     document.getElementById("search-input").value = clipboard.readText();
