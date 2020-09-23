@@ -1,7 +1,7 @@
-const electron = require("electron");
-const path = require("path");
-const Mousetrap = require("mousetrap");
-const { clipboard, remote, ipcRenderer, dialog, shell } = require("electron");
+import electron from "electron";
+import path from "path";
+import { bind } from "mousetrap";
+import { clipboard, ipcRenderer } from "electron";
 
 
 
@@ -41,7 +41,7 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   });
 }
 
-Mousetrap.bind(["command+c", "ctrl+c"], function() {
+bind(["command+c", "ctrl+c"], function() {
   clipboard.writeText(
     document.getElementById("theCode").innerHTML,
     "selection"
