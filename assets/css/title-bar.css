@@ -3,10 +3,12 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .title-bar button {
   outline: none;
   border: none;
 }
+
 .title-bar {
   background: #ef8f00;
   -webkit-app-region: drag;
@@ -45,6 +47,7 @@ body {
   width: 50px;
   height: 50px;
 }
+
 .minimize-button {
   -webkit-app-region: no-drag;
   background-color: #61ca43;
@@ -54,6 +57,7 @@ body {
   height: 25px;
   border-radius: 50px;
 }
+
 .min-max-button {
   -webkit-app-region: no-drag;
   background-color: #fdbc40;
@@ -63,6 +67,7 @@ body {
   height: 25px;
   border-radius: 50px;
 }
+
 .close-button {
   -webkit-app-region: no-drag;
   background-color: #fc605c;
@@ -72,10 +77,11 @@ body {
   height: 25px;
   border-radius: 50px;
 }
+
 img.menu-button {
   transition-duration: 500ms;
-
 }
+
 img.menu-button:hover {
   transition-duration: 500ms;
   transform: rotate(90deg);
