@@ -30,12 +30,11 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   }
   // receive message from main.js
 
-  ipcRenderer.on("asynchronous-reply", (event, code) => {
+  ipcRenderer.on("asynchronous-reply", (_event, code) => {
     if (code !== "") {
       document.getElementById("code").innerHTML =
         "code: <span id='theCode'>" + code + "</span>";
     } else {
-      console.log("Code is not valid");
       alert(code);
     }
   });
