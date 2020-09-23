@@ -63,7 +63,6 @@ function getClipboard() {
 }
 
 document.getElementById("body").onfocus = () => {
-  //console.log("Focus");
   document.getElementById("search-input").focus();
   getClipboard();
 };
