@@ -88,8 +88,8 @@ function createWindow() {
   });
   ipcMain.on("recieve-code", (event, code) => {
     console.log(code);
-    axios.get(`http://unidev.hys.cz/includes/get-api?user=${code}`).then(res => {
-      let url = res.data;
+    axios.get(`http://uni.hys.cz/includes/get-api?user=${code}`).then(res => {
+      const url = res.data;
       // send message to index.html
       event.sender.send("url-reply", url);
     });
