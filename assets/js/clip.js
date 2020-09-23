@@ -47,12 +47,12 @@ bind(["command+c", "ctrl+c"], () => {
 });
 document
   .getElementById("search-input")
-  .addEventListener("keydown", function (event) {
-    if (isKeyPressed(event, "Enter", 13)) {
-      event.preventDefault();
-      sendURL();
-    }
-  });
+  .addEventListener("keydown", (event) => {
+      if (isKeyPressed(event, "Enter", 13)) {
+        event.preventDefault();
+        sendURL();
+      }
+    });
 
 function getClipboard() {
   const t = clipboard.readText();
