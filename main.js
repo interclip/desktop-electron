@@ -81,7 +81,7 @@ function createWindow() {
   ipcMain.on("asynchronous-message", (event, url) => {
     console.log(url);
     axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then(res => {
-      let code = res.data;
+      const code = res.data;
       // send message to index.html
       event.sender.send("asynchronous-reply", code);
     });
