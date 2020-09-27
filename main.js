@@ -3,23 +3,22 @@ const {
   BrowserWindow,
   Menu,
   dialog,
-  globalShortcut,
-  ipcMain
+  ipcMain,
 } = require("electron");
 
 const shell = require("electron").shell;
-var path = require("path");
+const path = require("path");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 const axios = require("axios");
 
- //handle setupevents as quickly as possible
- const setupEvents = require('./installers/setupEvents');
- if (setupEvents.handleSquirrelEvent()) {
-    // squirrel event handled and app will exit in 1000ms, so don't do anything else
-    return;
- }
+//handle setupevents as quickly as possible
+const setupEvents = require("./installers/setupEvents");
+if (setupEvents.handleSquirrelEvent()) {
+  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+  return;
+}
 
 function createWindow() {
   // Create the browser window.
@@ -30,18 +29,17 @@ function createWindow() {
     minWidth: 500,
     icon: path.join(__dirname, "assets/icons/png/64.png"),
     frame: false, // for Windows
-    titleBarStyle: 'hidden', // for MacOS
+    titleBarStyle: "hidden", // for MacOS
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     },
     fullscreenable: false,
     backgroundColor: "#ec991f",
-    show: false
+    show: false,
   });
 
   win.once("ready-to-show", () => {
     win.show();
-
   });
 
   // and load the index.html of the app.
@@ -56,7 +54,8 @@ function createWindow() {
   win.on("closed", () => {
     win = null;
   });
-  var menu = Menu.buildFromTemplate([
+
+  const menu = Menu.buildFromTemplate([
     {
       label: "Interclip",
       submenu: [
@@ -64,39 +63,42 @@ function createWindow() {
           label: "About",
           click() {
             shell.openExternal("http://uni.hys.cz/about");
-          }
+          },
         },
         { type: "separator" },
         {
           label: "Exit",
           click() {
             app.quit();
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    },
   ]);
   Menu.setApplicationMenu(menu);
 
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
-    console.log(url);
-    axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then(res => {
-      let code = res.data;
+    axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then((res) => {
+      const code = res.data;
       // send message to index.html
       event.sender.send("asynchronous-reply", code);
     });
   });
   ipcMain.on("recieve-code", (event, code) => {
-    console.log(code);
-    axios.get(`http://unidev.hys.cz/includes/get-api?user=${code}`).then(res => {
-      let url = res.data;
-      // send message to index.html
-      event.sender.send("url-reply", url);
-    });
+    axios
+      .get(`http://uni.hys.cz/includes/get-api?user=${code}`)
+      .then((res) => {
+        const url = res.data;
+        // send message to index.html
+        event.sender.send("url-reply", url);
+      });
   });
-  ipcMain.on('show-error-box', (event, arg) => {
-    dialog.showErrorBox('Oops, this shouldn\'t have happened!', 'Your URL is probably not in the right format. Remember to write http/https.');
+  ipcMain.on("show-error-box", (_event, _arg) => {
+    dialog.showErrorBox(
+      "Oops, this shouldn't have happened!",
+      "Your URL is probably not in the right format. Remember to write http/https."
+    );
   });
 }
 

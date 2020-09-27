@@ -14,12 +14,12 @@ function isKeyPressed(event, expectedKey, expectedCode) {
   return false;
 }
 
-var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
-var regex = new RegExp(expression);
+const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+const regex = new RegExp(expression);
 
 function sendURL(urlInput = document.getElementById("search-input").value) {
   // send username to main.js
-  var t = urlInput;
+  const t = urlInput;
   if (t.match(regex)) {
     console.log("Sending shit");
 
@@ -30,7 +30,7 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   }
   // receive message from main.js
 
-  ipcRenderer.on("asynchronous-reply", (event, code) => {
+  ipcRenderer.on("asynchronous-reply", (_event, code) => {
     if (code != "") {
       document.getElementById("code").innerHTML =
         "code: <span id='theCode'>" + code + "</span>";
@@ -53,23 +53,23 @@ Mousetrap.bind(["command+c", "ctrl+c"], function() {
 });
 document
   .getElementById("search-input")
-  .addEventListener("keydown", function(event) {
-    if (isKeyPressed(event, "Enter", 13)) {
-      event.preventDefault();
-      sendURL();
-    }
-  });
+  .addEventListener("keydown", (event) => {
+      if (isKeyPressed(event, "Enter", 13)) {
+        event.preventDefault();
+        sendURL();
+      }
+    });
 
 function getClipboard() {
 
-  var t = clipboard.readText();
+  const t = clipboard.readText();
   if (t.match(regex)) {
     sendURL(t);
     document.getElementById("search-input").value = clipboard.readText();
   }
 }
 
-document.getElementById("body").onfocus = function() {
+document.getElementById("body").onfocus = () => {
   //console.log("Focus");
   document.getElementById("search-input").focus();
   getClipboard();
