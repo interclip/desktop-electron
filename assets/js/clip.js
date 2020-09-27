@@ -53,12 +53,12 @@ Mousetrap.bind(["command+c", "ctrl+c"], function() {
 });
 document
   .getElementById("search-input")
-  .addEventListener("keydown", function(event) {
-    if (isKeyPressed(event, "Enter", 13)) {
-      event.preventDefault();
-      sendURL();
-    }
-  });
+  .addEventListener("keydown", (event) => {
+      if (isKeyPressed(event, "Enter", 13)) {
+        event.preventDefault();
+        sendURL();
+      }
+    });
 
 function getClipboard() {
 
