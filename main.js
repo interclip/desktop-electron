@@ -55,7 +55,7 @@ function createWindow() {
   win.on("closed", () => {
     win = null;
   });
-  
+
   const menu = Menu.buildFromTemplate([
     {
       label: "Interclip",
@@ -90,7 +90,7 @@ function createWindow() {
   ipcMain.on("recieve-code", (event, code) => {
     console.log(code);
     axios
-      .get(`http://unidev.hys.cz/includes/get-api?user=${code}`)
+      .get(`http://uni.hys.cz/includes/get-api?user=${code}`)
       .then((res) => {
         const url = res.data;
         // send message to index.html
