@@ -54,6 +54,12 @@ input {
   -webkit-transform: translate(-100%, -50%);
   -ms-transform: translate(-100%, -50%);
   transform: translate(-100%, -50%);
+  box-sizing: border-box;
+  width: 75vw;
+  height: 50px;
+  margin-left: 35vw;
+  max-width: 80vw;
+  border-radius: 0;
 }
 
 .search {
@@ -161,13 +167,4 @@ input {
 
 .modal {
   max-height: 100vh;
-}
-
-input {
-  box-sizing: border-box;
-  width: 75vw;
-  height: 50px;
-  margin-left: 35vw;
-  max-width: 80vw;
-  border-radius: 0;
 }
