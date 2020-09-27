@@ -3,7 +3,6 @@ const {
   BrowserWindow,
   Menu,
   dialog,
-  globalShortcut,
   ipcMain,
 } = require("electron");
 
@@ -80,7 +79,6 @@ function createWindow() {
 
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
-    console.log(url);
     axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then((res) => {
       const code = res.data;
       // send message to index.html
@@ -88,7 +86,6 @@ function createWindow() {
     });
   });
   ipcMain.on("recieve-code", (event, code) => {
-    console.log(code);
     axios
       .get(`http://uni.hys.cz/includes/get-api?user=${code}`)
       .then((res) => {
