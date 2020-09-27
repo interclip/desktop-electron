@@ -14,8 +14,8 @@ function isKeyPressed(event, expectedKey, expectedCode) {
   return false;
 }
 
-var expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
-var regex = new RegExp(expression);
+const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+const regex = new RegExp(expression);
 
 function sendURL(urlInput = document.getElementById("search-input").value) {
   // send username to main.js
