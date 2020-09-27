@@ -19,7 +19,7 @@ var regex = new RegExp(expression);
 
 function sendURL(urlInput = document.getElementById("search-input").value) {
   // send username to main.js
-  var t = urlInput;
+  const t = urlInput;
   if (t.match(regex)) {
     console.log("Sending shit");
 
