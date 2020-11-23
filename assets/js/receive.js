@@ -27,9 +27,8 @@ function placeHolder() {
 }
 
 function sendCode(urlInput = codeInput.value) {
-    console.log("Sending: " + urlInput);
     // send username to main.js
-    var t = codeInput.value;
+    const t = codeInput.value;
     if (t.length <= 5) {
       ipcRenderer.send("recieve-code", urlInput);
     } else {
