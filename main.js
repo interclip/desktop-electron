@@ -20,6 +20,8 @@ if (setupEvents.handleSquirrelEvent()) {
   return;
 }
 
+const endpoint = "https://link.mannoviny.cz";
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
@@ -62,7 +64,7 @@ function createWindow() {
         {
           label: "About",
           click() {
-            shell.openExternal("http://uni.hys.cz/about");
+            shell.openExternal(`${endpoint}/about`);
           },
         },
         { type: "separator" },
@@ -80,9 +82,9 @@ function createWindow() {
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
     axios
-      .get(`http://uni.hys.cz/includes/api?url=${url}`)
+      .get(`${endpoint}/includes/api?url=${url}`)
       .then((res) => {
-        const code = res.data;
+        const code = res.data.result;
         // send message to index.html
         event.sender.send("asynchronous-reply", code);
       })
@@ -93,9 +95,9 @@ function createWindow() {
       dialog.showErrorBox("Error with your code", `This code should be 5 characters long, not ${code.length}, please correct that.`);
     } else {
     axios
-      .get(`http://uni.hys.cz/includes/get-api?user=${code}`)
+      .get(`${endpoint}/includes/get-api?code=${code}`)
       .then((res) => {
-        const url = res.data;
+        const url = res.data.result;
         // send message to index.html
         event.sender.send("url-reply", url);
       })
