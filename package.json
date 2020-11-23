@@ -1,15 +1,14 @@
 {
   "name": "interclip",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Interclip for desktop operating systems",
   "repository": "https://github.com/aperta-principium/Interclip-desktop",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . Interclip --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Interclip\"",
+    "package-win": "electron-packager . Interclip --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Interclip\" && node installers/windows/createinstaller.js",
     "package-linux": "electron-packager . Interclip --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
-    "win-install": "node installers/windows/createinstaller.js",
     "create-debian-installer": "electron-installer-debian --src release-builds/Interclip-linux-x64/ --arch amd64 --config debian.json"
   },
   "keywords": [
