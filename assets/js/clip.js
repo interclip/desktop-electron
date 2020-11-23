@@ -41,16 +41,16 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
   });
 }
 
-Mousetrap.bind(["command+c", "ctrl+c"], function() {
-  clipboard.writeText(
-    document.getElementById("theCode").innerHTML,
-    "selection"
-  );
-  console.log(`Copied: ${clipboard.readText("selection")}`);
-  // return false to prevent default browser behavior
-  // and stop event from bubbling
-  return false;
-});
+Mousetrap.bind(["command+c", "ctrl+c"], () => {
+    clipboard.writeText(
+      document.getElementById("theCode").innerHTML,
+      "selection"
+    );
+    console.log(`Copied: ${clipboard.readText("selection")}`);
+    // return false to prevent default browser behavior
+    // and stop event from bubbling
+    return false;
+  });
 document
   .getElementById("search-input")
   .addEventListener("keydown", (event) => {
