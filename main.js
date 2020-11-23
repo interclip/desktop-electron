@@ -20,6 +20,8 @@ if (setupEvents.handleSquirrelEvent()) {
   return;
 }
 
+const endpoint = "https://link.mannoviny.cz";
+
 function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
@@ -62,7 +64,7 @@ function createWindow() {
         {
           label: "About",
           click() {
-            shell.openExternal("http://uni.hys.cz/about");
+            shell.openExternal(`${endpoint}/about`);
           },
         },
         { type: "separator" },
@@ -79,7 +81,7 @@ function createWindow() {
 
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
-    axios.get(`https://link.mannoviny.cz/includes/api?url=${url}`).then((res) => {
+    axios.get(`${endpoint}/includes/api?url=${url}`).then((res) => {
       const code = res.data.result;
       // send message to index.html
       event.sender.send("asynchronous-reply", code);
@@ -87,7 +89,7 @@ function createWindow() {
   });
   ipcMain.on("recieve-code", (event, code) => {
     axios
-      .get(`https://link.mannoviny.cz/includes/get-api?code=${code}`)
+      .get(`${endpoint}/includes/get-api?code=${code}`)
       .then((res) => {
         const url = res.data.result;
         // send message to index.html
