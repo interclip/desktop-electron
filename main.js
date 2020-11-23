@@ -79,17 +79,17 @@ function createWindow() {
 
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
-    axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then((res) => {
-      const code = res.data;
+    axios.get(`https://link.mannoviny.cz/includes/api?url=${url}`).then((res) => {
+      const code = res.data.result;
       // send message to index.html
       event.sender.send("asynchronous-reply", code);
     });
   });
   ipcMain.on("recieve-code", (event, code) => {
     axios
-      .get(`http://uni.hys.cz/includes/get-api?code=${code}`)
+      .get(`https://link.mannoviny.cz/includes/get-api?code=${code}`)
       .then((res) => {
-        const url = res.data;
+        const url = res.data.result;
         // send message to index.html
         event.sender.send("url-reply", url);
       });
