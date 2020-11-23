@@ -86,6 +86,9 @@ function createWindow() {
     });
   });
   ipcMain.on("recieve-code", (event, code) => {
+    if(code.length !== 5) {
+      dialog.showErrorBox("Error with your code", `This code should be 5 characters long, not ${code.length}, please correct that.`);
+    } else {
     axios
       .get(`http://uni.hys.cz/includes/get-api?user=${code}`)
       .then((res) => {
@@ -94,6 +97,7 @@ function createWindow() {
         event.sender.send("url-reply", url);
       })
       .catch((err) => {dialog.showErrorBox(`Seems like... that isn't a code at all!`, `(${err})`)});
+    }
   });
   ipcMain.on("show-error-box", (_event, _arg) => {
     dialog.showErrorBox(
