@@ -19,7 +19,7 @@ function isKeyPressed(event, expectedKey, expectedCode) {
 }
 
 function placeHolder() {
-  var hash = Math.random()
+  const hash = Math.random()
     .toString(36)
     .substr(2, 5);
 
@@ -27,9 +27,8 @@ function placeHolder() {
 }
 
 function sendCode(urlInput = codeInput.value) {
-    console.log("Sending: " + urlInput);
     // send username to main.js
-    var t = codeInput.value;
+    const t = codeInput.value;
     if (t.length <= 5) {
       ipcRenderer.send("recieve-code", urlInput);
     } else {
@@ -37,39 +36,39 @@ function sendCode(urlInput = codeInput.value) {
     }
     // receive message from main.js
   
-    ipcRenderer.on("url-reply", (event, code) => {
+    ipcRenderer.on("url-reply", (_event, code) => {
       if (code != "") {
         document.getElementById("result").innerHTML =
-          "<span id='theCode'>" + code + "</span>  <br> <span id='openExt' style='display: none' onClick='openExtLink("+code+")'>Open in browser</span>";
+          `<span id='theCode'>${code}</span>  <br> <span id='openExt' style='display: none' onClick='openExtLink(${code})'>Open in browser</span>`;
       } else {
-          alert("Got " + code);
+          alert(`Got ${code}`);
       }
     });
   }
 
-setInterval(function() {
-  placeHolder();
-}, 50);
+setInterval(() => {
+    placeHolder();
+  }, 100);
 
-document.getElementById("body").onfocus = function() {
+document.getElementById("body").onfocus = () => {
   //console.log("Focus");
   codeInput.focus();
 };
 
 document
-  .addEventListener("keydown", function(event) {
-    if (isKeyPressed(event, "Enter", 13)) {
-      event.preventDefault();
-      sendCode();
-    }
-  });
-  Mousetrap.bind(["command+c", "ctrl+c"], function() {
-    clipboard.writeText(
-      document.getElementById("theCode").innerHTML,
-      "selection"
-    );
-    console.log(`Copied: ${clipboard.readText("selection")}`);
-    // return false to prevent default browser behavior
-    // and stop event from bubbling
-    return false;
-  });
+  .addEventListener("keydown", (event) => {
+      if (isKeyPressed(event, "Enter", 13)) {
+        event.preventDefault();
+        sendCode();
+      }
+    });
+  Mousetrap.bind(["command+c", "ctrl+c"], () => {
+      clipboard.writeText(
+        document.getElementById("theCode").innerHTML,
+        "selection"
+      );
+      console.log(`Copied: ${clipboard.readText("selection")}`);
+      // return false to prevent default browser behavior
+      // and stop event from bubbling
+      return false;
+    });

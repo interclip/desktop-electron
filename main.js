@@ -81,20 +81,28 @@ function createWindow() {
 
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
-    axios.get(`${endpoint}/includes/api?url=${url}`).then((res) => {
-      const code = res.data.result;
-      // send message to index.html
-      event.sender.send("asynchronous-reply", code);
-    });
+    axios
+      .get(`${endpoint}/includes/api?url=${url}`)
+      .then((res) => {
+        const code = res.data.result;
+        // send message to index.html
+        event.sender.send("asynchronous-reply", code);
+      })
+      .catch((err) => dialog.showErrorBox("There is an error with your URL", `${err}`));
   });
   ipcMain.on("recieve-code", (event, code) => {
+    if(code.length !== 5) {
+      dialog.showErrorBox("Error with your code", `This code should be 5 characters long, not ${code.length}, please correct that.`);
+    } else {
     axios
       .get(`${endpoint}/includes/get-api?code=${code}`)
       .then((res) => {
         const url = res.data.result;
         // send message to index.html
         event.sender.send("url-reply", url);
-      });
+      })
+      .catch((err) => {dialog.showErrorBox(`Seems like... that isn't a code at all!`, `(${err})`)});
+    }
   });
   ipcMain.on("show-error-box", (_event, _arg) => {
     dialog.showErrorBox(

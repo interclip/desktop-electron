@@ -1,7 +1,7 @@
 {
   "name": "interclip",
-  "version": "0.2.0",
-  "description": "Interclip for desktop",
+  "version": "0.2.1",
+  "description": "Interclip for desktop operating systems",
   "repository": "https://github.com/aperta-principium/Interclip-desktop",
   "main": "main.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "author": "Filip Troníček",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^9.2.0",
+    "electron": "^9.3.1",
     "electron-builder": "^22.8.0",
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^15.0.0",
