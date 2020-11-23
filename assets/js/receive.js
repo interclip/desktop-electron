@@ -47,29 +47,29 @@ function sendCode(urlInput = codeInput.value) {
     });
   }
 
-setInterval(function() {
-  placeHolder();
-}, 50);
+setInterval(() => {
+    placeHolder();
+  }, 50);
 
-document.getElementById("body").onfocus = function() {
+document.getElementById("body").onfocus = () => {
   //console.log("Focus");
   codeInput.focus();
 };
 
 document
-  .addEventListener("keydown", function(event) {
-    if (isKeyPressed(event, "Enter", 13)) {
-      event.preventDefault();
-      sendCode();
-    }
-  });
-  Mousetrap.bind(["command+c", "ctrl+c"], function() {
-    clipboard.writeText(
-      document.getElementById("theCode").innerHTML,
-      "selection"
-    );
-    console.log(`Copied: ${clipboard.readText("selection")}`);
-    // return false to prevent default browser behavior
-    // and stop event from bubbling
-    return false;
-  });
+  .addEventListener("keydown", (event) => {
+      if (isKeyPressed(event, "Enter", 13)) {
+        event.preventDefault();
+        sendCode();
+      }
+    });
+  Mousetrap.bind(["command+c", "ctrl+c"], () => {
+      clipboard.writeText(
+        document.getElementById("theCode").innerHTML,
+        "selection"
+      );
+      console.log(`Copied: ${clipboard.readText("selection")}`);
+      // return false to prevent default browser behavior
+      // and stop event from bubbling
+      return false;
+    });
