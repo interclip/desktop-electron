@@ -48,7 +48,7 @@ function sendCode(urlInput = codeInput.value) {
 
 setInterval(() => {
     placeHolder();
-  }, 50);
+  }, 100);
 
 document.getElementById("body").onfocus = () => {
   //console.log("Focus");
