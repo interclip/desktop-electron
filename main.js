@@ -79,11 +79,14 @@ function createWindow() {
 
   // receive message from index.html
   ipcMain.on("asynchronous-message", (event, url) => {
-    axios.get(`http://uni.hys.cz/includes/api?url=${url}`).then((res) => {
-      const code = res.data;
-      // send message to index.html
-      event.sender.send("asynchronous-reply", code);
-    });
+    axios
+      .get(`http://uni.hys.cz/includes/api?url=${url}`)
+      .then((res) => {
+        const code = res.data;
+        // send message to index.html
+        event.sender.send("asynchronous-reply", code);
+      })
+      .catch((err) => dialog.showErrorBox("There is an error with your URL", `${err}`));
   });
   ipcMain.on("recieve-code", (event, code) => {
     if(code.length !== 5) {
