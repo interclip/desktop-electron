@@ -92,7 +92,8 @@ function createWindow() {
         const url = res.data;
         // send message to index.html
         event.sender.send("url-reply", url);
-      });
+      })
+      .catch((err) => {dialog.showErrorBox(`Seems like... that isn't a code at all!`, `(${err})`)});
   });
   ipcMain.on("show-error-box", (_event, _arg) => {
     dialog.showErrorBox(
