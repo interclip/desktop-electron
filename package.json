@@ -19,7 +19,6 @@
   "author": "Filip Troníček",
   "license": "MIT",
   "devDependencies": {
-    "minimist": "^1.2.3",
     "electron": "^9.2.0",
     "electron-builder": "^22.8.0",
     "electron-installer-dmg": "^3.0.0",
@@ -27,7 +26,8 @@
     "electron-reload": "^1.5.0",
     "electron-winstaller": "^4.0.1",
     "jquery": "^3.5.1",
-    "jsdom": "^16.4.0"
+    "jsdom": "^16.4.0",
+    "minimist": "^1.2.3"
   },
   "dependencies": {
     "axios": "^0.19.2",

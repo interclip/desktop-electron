@@ -32,7 +32,7 @@ function sendURL(urlInput = document.getElementById("search-input").value) {
 
   ipcRenderer.on("asynchronous-reply", (_event, code) => {
     if (code != "") {
-      document.getElementById("code").innerHTML =
+      document.getElementById("code").innerText =
         "code: <span id='theCode'>" + code + "</span>";
     } else {
       console.log("Code is not valid");
