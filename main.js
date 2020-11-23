@@ -87,7 +87,7 @@ function createWindow() {
   });
   ipcMain.on("recieve-code", (event, code) => {
     axios
-      .get(`http://uni.hys.cz/includes/get-api?user=${code}`)
+      .get(`http://uni.hys.cz/includes/get-api?code=${code}`)
       .then((res) => {
         const url = res.data;
         // send message to index.html
