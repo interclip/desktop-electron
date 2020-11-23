@@ -19,7 +19,7 @@ function isKeyPressed(event, expectedKey, expectedCode) {
 }
 
 function placeHolder() {
-  var hash = Math.random()
+  const hash = Math.random()
     .toString(36)
     .substr(2, 5);
 
@@ -37,12 +37,12 @@ function sendCode(urlInput = codeInput.value) {
     }
     // receive message from main.js
   
-    ipcRenderer.on("url-reply", (event, code) => {
+    ipcRenderer.on("url-reply", (_event, code) => {
       if (code != "") {
         document.getElementById("result").innerHTML =
-          "<span id='theCode'>" + code + "</span>  <br> <span id='openExt' style='display: none' onClick='openExtLink("+code+")'>Open in browser</span>";
+          `<span id='theCode'>${code}</span>  <br> <span id='openExt' style='display: none' onClick='openExtLink(${code})'>Open in browser</span>`;
       } else {
-          alert("Got " + code);
+          alert(`Got ${code}`);
       }
     });
   }
