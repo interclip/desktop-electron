@@ -26,7 +26,7 @@
     "electron-winstaller": "^4.0.1",
     "jquery": "^3.5.1",
     "jsdom": "^16.4.0",
-    "minimist": "^1.2.3"
+    "minimist": "^1.2.5"
   },
   "dependencies": {
     "axios": "^0.21.1",
