@@ -31,11 +31,12 @@ function createWindow() { // Create the browser window.
         frame: false, // for Windows
         titleBarStyle: "hidden", // for MacOS
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true
         },
         fullscreenable: false,
         backgroundColor: "#ec991f",
-        show: false
+        show: false,
     });
 
     win.once("ready-to-show", () => {
@@ -46,7 +47,7 @@ function createWindow() { // Create the browser window.
     win.loadFile("src/clip.html");
 
     // Open the DevTools.
-    // win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     app.setUserTasks([]);
 
