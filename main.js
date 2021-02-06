@@ -46,6 +46,10 @@ function createWindow() { // Create the browser window.
     // and load the index.html of the app.
     win.loadFile("src/clip.html");
 
+    win.unmaximize();
+    win.setResizable(false);
+    win.on('maximize', () => mainWindow.unmaximize());
+
     // Open the DevTools.
     //win.webContents.openDevTools();
 
