@@ -52,8 +52,9 @@ function createWindow() { // Create the browser window.
 
     // Open the DevTools.
     //win.webContents.openDevTools();
-
-    app.setUserTasks([]);
+    if (process.platform === "win") {
+        app.setUserTasks([]);
+    }
 
     // Emitted when the window is closed.
     win.on("closed", () => {
@@ -78,6 +79,7 @@ function createWindow() { // Create the browser window.
                 },
             ]
         },]);
+
     Menu.setApplicationMenu(menu);
 
     // receive message from index.html
