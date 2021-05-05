@@ -9,7 +9,7 @@ jobs:
     # Platforms to build on/for
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, macOS-latest]
         node: [10, 12, 14, 15]
         
     name: 📦 Node ${{ matrix.node }} 🖥️ ${{ matrix.os }}
