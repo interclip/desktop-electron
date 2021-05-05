@@ -35,10 +35,7 @@ body {
 
 input {
   box-sizing: border-box;
-  width: 50px;
-  height: 50px;
   border: 4px solid #fff;
-  border-radius: 50%;
   background: none;
   color: #fff;
   font-size: 16px;
@@ -52,7 +49,6 @@ input {
   -webkit-transform: translate(-100%, -50%);
   -ms-transform: translate(-100%, -50%);
   transform: translate(-100%, -50%);
-  box-sizing: border-box;
   width: 75vw;
   height: 50px;
   margin-left: 35vw;
