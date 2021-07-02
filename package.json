@@ -18,7 +18,7 @@
   "author": "Filip Troníček",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^12.0.6",
+    "electron": "^13.1.5",
     "electron-builder": "^22.10.5",
     "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^15.2.0",
