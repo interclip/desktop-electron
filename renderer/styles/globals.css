@@ -22,3 +22,11 @@ body {
   width: 45rem;
   max-width: 90vw;
 }
+
+.receive-bar {
+  font-size: 36px;
+}
+
+.receive-bar::placeholder {
+  filter: grayscale(100%);
+}

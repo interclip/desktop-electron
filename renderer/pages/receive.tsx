@@ -17,8 +17,8 @@ function Home() {
             maxLength={5}
             type="url"
             name="input"
-            className="urlbar border-solid rounded-3xl text-black"
-            placeholder="https://youtu.be/dQw4w9WgXcQ"
+            className="receive-bar w-64 border-none rounded text-black text-center"
+            placeholder="😳🤩😇😲😋"
             id="search-input"
           />
         </div>
