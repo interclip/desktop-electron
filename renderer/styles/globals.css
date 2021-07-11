@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", Helvetica, sans-serif;
 }
 
 body {
