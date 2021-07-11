@@ -6,5 +6,6 @@ module.exports = {
   variants: {
     extend: {},
   },
+  purge: ["**/*.tsx"],
   plugins: [],
 };
