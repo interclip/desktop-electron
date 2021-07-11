@@ -7,7 +7,7 @@ import Menu from "../components/Menu";
 function Home() {
   const [linkInput, setLinkInput] = useState("");
   const [linkSubmitted, setLinkSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [code, setCode] = useState("");
 
   return (
