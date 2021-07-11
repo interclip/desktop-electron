@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 const MenuItem = (props: {
   href: string;
   children: React.ReactChild | React.ReactFragment | React.ReactPortal;
 }): JSX.Element => {
   return (
-    <a href={props.href}>
-      <li className="px-4 py-4  list-none bg-white rounded-xl">
+    <Link href={props.href}>
+      <li className="px-4 py-4 cursor-pointer list-none bg-white rounded-xl">
         {props.children}
       </li>
-    </a>
+    </Link>
   );
 };
 
