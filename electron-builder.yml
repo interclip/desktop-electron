@@ -1,6 +1,6 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: com.filiptronicek.interclip
+productName: Interclip
+copyright: Copyright (c) 2021
 directories:
   output: dist
   buildResources: resources

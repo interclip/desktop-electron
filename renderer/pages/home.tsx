@@ -1,27 +1,25 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import React from "react";
+import Head from "next/head";
 
 function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Home - Nextron (with-typescript-tailwindcss)</title>
+        <title>Interclip</title>
       </Head>
-      <div className='grid grid-col-1 text-2xl w-full text-center'>
-        <img className='ml-auto mr-auto' src='/images/logo.png' />
-        <span>⚡ Electron ⚡</span>
-        <span>+</span>
-        <span>Next.js</span>
-        <span>+</span>
-        <span>tailwindcss</span>
-        <span>=</span>
-        <span>love </span>
-      </div>
-      <div className='mt-1 w-full flex-wrap flex justify-center'>
-        <Link href='/next'>
-          <a className='btn-blue'>Go to next page</a>
-        </Link>
+      <div className="w-full h-screen">
+        <div className="flex flex-col content-center items-center text-white">
+          <h2 className="text-5xl mt-40 mb-10">
+            Paste your link here!
+          </h2>
+          <input
+            type="url"
+            name="input"
+            className="urlbar border-solid rounded-3xl w-3/5 text-black"
+            placeholder="https://youtu.be/dQw4w9WgXcQ"
+            id="search-input"
+          />
+        </div>
       </div>
     </React.Fragment>
   );
