@@ -7,13 +7,14 @@ function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Interclip</title>
+        <title>Receive a clip | Interclip</title>
       </Head>
       <div className="w-full h-screen">
         <Menu />
         <div className="flex flex-col content-center items-center text-white">
-          <h2 className="text-5xl mt-40 mb-10">Paste your link here!</h2>
+          <h2 className="text-5xl mt-40 mb-10">Get your link here!</h2>
           <input
+            maxLength={5}
             type="url"
             name="input"
             className="urlbar border-solid rounded-3xl text-black"
