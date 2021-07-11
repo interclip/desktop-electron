@@ -14,10 +14,13 @@ if (isProd) {
   await app.whenReady();
 
   const mainWindow = createWindow("main", {
-    width: 1000,
+    minWidth: 800,
+    minHeight: 500,
     height: 600,
+    width: 1000,
     backgroundColor: "#157EFB",
     autoHideMenuBar: true,
+    fullscreenable: false,
   });
 
   if (isProd) {

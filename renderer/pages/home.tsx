@@ -15,7 +15,7 @@ function Home() {
           <input
             type="url"
             name="input"
-            className="urlbar border-solid rounded-3xl w-3/5 text-black"
+            className="urlbar border-solid rounded-3xl text-black"
             placeholder="https://youtu.be/dQw4w9WgXcQ"
             id="search-input"
           />
