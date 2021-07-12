@@ -29,8 +29,8 @@ if (isProd) {
   });
 
   // Change the UI to reflect whether the app is in development mode
-  ipcMain.on('dev-request', (event) => {
-    event.sender.send('dev-reply', !isProd);
+  ipcMain.on("dev-request", (event) => {
+    event.sender.send("dev-reply", !isProd);
   });
 
   if (isProd) {
@@ -68,9 +68,22 @@ if (isProd) {
 
     ipcMain.on("synchronous-message", (event, arg) => {
       if (arg === "check-update") {
-          autoUpdater.checkForUpdates();
+        autoUpdater.checkForUpdates();
       }
       event.returnValue = "done";
+    });
+
+    autoUpdater.on("update-not-available", () => {
+      const dialogOpts = {
+        type: "info",
+        buttons: ["Retry", "OK"],
+        title: "Application Update",
+        message: "No updates available, you are on the newest build!",
+      };
+
+      dialog.showMessageBox(dialogOpts).then((returnValue) => {
+        if (returnValue.response === 0) autoUpdater.checkForUpdates();
+      });
     });
 
     autoUpdater.on("error", (message) => {
