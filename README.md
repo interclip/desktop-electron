@@ -1,20 +1,38 @@
-# Interclip desktop
-Interclip desktop client
+<p align="center"><img src="https://i.imgur.com/a9QWW0v.png"></p>
 
-Keyboard shortcuts:
+## Usage
 
-* ```Ctrl(Command)+C``` = copy code
+### Create an App
 
-(BETA) Download for Windows (click on image below or download from releases)
+```
+# with npx
+$ npx create-nextron-app my-app --example with-typescript-tailwindcss
 
+# with yarn
+$ yarn create nextron-app my-app --example with-typescript-tailwindcss
 
-## Downloads
+# with pnpx
+$ pnpx create-nextron-app my-app --example with-typescript-tailwindcss
+```
 
-* Linux (.AppImage for Linux Ubuntu, RedHat, Debian, Fedora, Arch, whatever)
-(for more support documentation, visit [appimage.org](https://appimage.org/))
-![installing on Ubuntu](https://s.put.re/QKiEEMki.gif)
+### Install Dependencies
 
-* Windows (.exe file)
-![installing on Windows](https://s.put.re/uKny4NFr.gif)
+```
+$ cd my-app
 
-* macOS (.dmg)
+# using yarn or npm
+$ yarn (or `npm install`)
+
+# using pnpm
+$ pnpm install --shamefully-hoist
+```
+
+### Use it
+
+```
+# development mode
+$ yarn dev (or `npm run dev` or `pnpm run dev`)
+
+# production build
+$ yarn build (or `npm run build` or `pnpm run build`)
+```

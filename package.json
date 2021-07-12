@@ -1,51 +1,39 @@
 {
-  "name": "interclip",
-  "version": "0.3.1",
-  "description": "Interclip for desktop operating systems",
-  "repository": "https://github.com/aperta-principium/Interclip-desktop",
-  "main": "main.js",
+  "private": true,
+  "name": "interclip-desktop",
+  "description": "My application description",
+  "version": "1.0.0",
+  "author": "Filip Troníček <filip.tronicek@seznam.cz>",
+  "main": "app/background.js",
   "scripts": {
-    "start": "electron .",
-    "package-mac": "electron-packager . --overwrite --asar=true --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . Interclip --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Interclip\" && node installers/windows/createinstaller.js",
-    "package-linux": "electron-packager . Interclip --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds",
-    "create-debian-installer": "electron-installer-debian --src release-builds/Interclip-linux-x64/ --arch amd64 --config debian.json"
-  },
-  "keywords": [
-    "Desktop",
-    "Interclip"
-  ],
-  "author": "Filip Troníček",
-  "license": "MIT",
-  "devDependencies": {
-    "electron": "^12.0.6",
-    "electron-builder": "^22.10.5",
-    "electron-installer-dmg": "^3.0.0",
-    "electron-packager": "^15.2.0",
-    "electron-reload": "^1.5.0",
-    "electron-winstaller": "^5.0.0",
-    "jquery": "^3.6.0",
-    "jsdom": "^16.5.3",
-    "minimist": "^1.2.5"
+    "dev": "nextron",
+    "build": "nextron build",
+    "build:all": "nextron build --all",
+    "build:win32": "nextron build --win --ia32",
+    "build:win64": "nextron build --win --x64",
+    "build:mac": "nextron build --mac --x64",
+    "build:linux": "nextron build --linux",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "mousetrap": "^1.6.5"
+    "@electron/remote": "^1.2.0",
+    "electron-serve": "^1.1.0",
+    "electron-store": "^7.0.2",
+    "react-qr-code": "^1.1.1"
   },
-  "build": {
-    "appId": "com.aperta-principium.interclip",
-    "productName": "Interclip",
-    "mac": {
-      "category": "public.app-category.utilities"
-    },
-    "dmg": {
-      "icon": false
-    },
-    "linux": {
-      "target": [
-        "AppImage"
-      ],
-      "category": "Utility"
-    }
+  "devDependencies": {
+    "@types/node": "^14.14.20",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "autoprefixer": "^10.2.5",
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
+    "next": "^10.1.3",
+    "nextron": "^6.0.6",
+    "postcss": "^8.2.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss": "^2.0.2",
+    "typescript": "^4.2.3"
   }
 }

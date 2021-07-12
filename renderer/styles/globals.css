@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::selection {
+  color: black;
+  background: white;
+}
+
+* {
+  font-family: "Lato", Helvetica, sans-serif;
+}
+
+body {
+  background: #157efb;
+}
+
+.urlbar {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+  padding: 0 10px;
+  height: 3.2rem;
+  border: 4px solid #fff;
+
+  width: 35rem;
+  max-width: 90vw;
+}
+
+.infor a {
+  text-decoration: underline;
+}
+
+.receive-bar {
+  font-size: 36px;
+}
+
+.receive-bar::placeholder {
+  filter: grayscale(100%);
+}

@@ -1,4 +1,5 @@
 node_modules
-desktop.ini
-release-builds
-package-lock.json
+*.log
+.next
+app
+dist
