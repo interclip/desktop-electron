@@ -20,7 +20,6 @@
     "electron-log": "^4.3.5",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.0.0",
-    "electron-util": "^0.17.0",
     "react-qr-code": "^1.1.1",
     "update-electron-app": "^2.0.1"
   },
