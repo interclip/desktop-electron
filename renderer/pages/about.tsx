@@ -46,6 +46,7 @@ const About = () => {
               <ul>
                 <li>Chrome: {process.versions.chrome}</li>
                 <li>Node: {process.versions.node}</li>
+                <li>Electron: {process.versions.electron}</li>
                 <li>Architecture: {process.arch}</li>
                 <li>Platform: {process.platform}</li>
               </ul>
