@@ -24,7 +24,7 @@ const Menu = (): JSX.Element => {
           <>
             <MenuItem href="/home">Create a clip</MenuItem>
             <MenuItem href="/receive">Get a clip</MenuItem>
-            <MenuItem href="/">About Interclip Desktop</MenuItem>
+            <MenuItem href="/about">About Interclip Desktop</MenuItem>
           </>
         )}
       </div>

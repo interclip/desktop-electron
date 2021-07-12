@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  color: black;
+  background: white;
+}
+
 * {
   font-family: "Lato", Helvetica, sans-serif;
 }
@@ -21,6 +26,10 @@ body {
 
   width: 35rem;
   max-width: 90vw;
+}
+
+.infor a {
+  text-decoration: underline;
 }
 
 .receive-bar {

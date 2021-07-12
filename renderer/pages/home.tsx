@@ -43,7 +43,7 @@ function Home() {
               setLinkSubmitted(false);
               setCode("");
             }}
-            className={linkSubmitted && "mt-20"}
+            className={linkSubmitted ? "mt-20" : undefined}
           >
             <input
               type="url"
