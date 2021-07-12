@@ -39,11 +39,6 @@ if (isProd) {
       process.arch
     }/${app.getVersion()}`;
 
-    dialog.showMessageBox(mainWindow, {
-      title: "Stuff's happening",
-      message: `Checking for updates... ${feed}`,
-    });
-
     autoUpdater.setFeedURL(feed);
 
     // Check for updates every 30 minutes
