@@ -1,4 +1,4 @@
-import { app, autoUpdater, dialog } from "electron";
+import { app, autoUpdater, dialog, ipcMain } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 
@@ -26,6 +26,11 @@ if (isProd) {
       enableRemoteModule: true,
       nodeIntegration: true,
     },
+  });
+
+  // Change the UI to reflect whether the app is in development mode
+  ipcMain.on('dev-request', (event) => {
+    event.sender.send('dev-reply', !isProd);
   });
 
   if (isProd) {
@@ -61,8 +66,18 @@ if (isProd) {
       });
     });
 
+    ipcMain.on("synchronous-message", (event, arg) => {
+      if (arg === "check-update") {
+          autoUpdater.checkForUpdates();
+      }
+      event.returnValue = "done";
+    });
+
     autoUpdater.on("error", (message) => {
-      dialog.showErrorBox("There was a problem updating the application", message.toString());
+      dialog.showErrorBox(
+        "There was a problem updating the application",
+        message.toString()
+      );
     });
   }
 
