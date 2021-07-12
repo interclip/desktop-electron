@@ -9,18 +9,19 @@ jobs:
     # Platforms to build on/for
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, ubuntu-18.04, windows-latest]
-        node: [14, 15]
+        os: [ubuntu-latest, macOS-latest, ubuntu-18.04, windows-latest, windows-2016]
+        node: [14, 15, 16]
         
     name: 📦 Node ${{ matrix.node }} 🖥️ ${{ matrix.os }}
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install
