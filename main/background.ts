@@ -41,9 +41,29 @@ if (isProd) {
 
     autoUpdater.setFeedURL(feed);
 
+    // Check for updates every 30 minutes
     setInterval(() => {
       autoUpdater.checkForUpdates();
     }, 30 * 60 * 1000);
+
+    autoUpdater.on("update-downloaded", (_event, releaseNotes, releaseName) => {
+      const dialogOpts = {
+        type: "info",
+        buttons: ["Restart", "Later"],
+        title: "Application Update",
+        message: process.platform === "win32" ? releaseNotes : releaseName,
+        detail:
+          "A new version has been downloaded. Restart the application to apply the updates.",
+      };
+
+      dialog.showMessageBox(dialogOpts).then((returnValue) => {
+        if (returnValue.response === 0) autoUpdater.quitAndInstall();
+      });
+    });
+
+    autoUpdater.on("error", (message) => {
+      dialog.showErrorBox("There was a problem updating the application", message.toString());
+    });
   }
 
   // Open new windows in the default browser in Electon.
