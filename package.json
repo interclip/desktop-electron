@@ -18,7 +18,7 @@
   "dependencies": {
     "@electron/remote": "^1.2.0",
     "electron-serve": "^1.1.0",
-    "electron-store": "^7.0.2",
+    "electron-store": "^8.0.0",
     "react-qr-code": "^1.1.1"
   },
   "devDependencies": {
