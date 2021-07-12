@@ -1,8 +1,8 @@
-import { app } from "electron";
+import { app, autoUpdater, dialog } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 
-require('@electron/remote/main').initialize();
+require("@electron/remote/main").initialize();
 
 const isProd: boolean = process.env.NODE_ENV === "production";
 
@@ -27,6 +27,24 @@ if (isProd) {
       nodeIntegration: true,
     },
   });
+
+  if (isProd) {
+    const server: string = "https://update.electronjs.org";
+    const feed: string = `${server}/interclip/desktop/${process.platform}-${
+      process.arch
+    }/${app.getVersion()}`;
+
+    dialog.showMessageBox(mainWindow, {
+      title: "Stuff's happening",
+      message: `Checking for updates... ${feed}`,
+    });
+
+    autoUpdater.setFeedURL(feed);
+
+    setInterval(() => {
+      autoUpdater.checkForUpdates();
+    }, 30 * 60 * 1000);
+  }
 
   // Open new windows in the default browser in Electon.
   mainWindow.webContents.on("new-window", (e: Event, url: string) => {

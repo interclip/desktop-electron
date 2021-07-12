@@ -51,6 +51,10 @@ const About = () => {
                 <li>Platform: {process.platform}</li>
               </ul>
             </details>
+            <div className="mt-8"></div>
+            <div>
+              <a className="p-4 bg-white text-black rounded-xl cursor-pointer">Check for updates</a>
+            </div>
           </div>
         </div>
       </div>
