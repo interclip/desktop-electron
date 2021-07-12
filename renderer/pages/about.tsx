@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-const app = require("@electron/remote").app;
 import Menu from "../components/Menu";
 
 const About = () => {
-  const [version, setVersion] = useState("");
-
-  useEffect(() => {
-    setVersion(app.getVersion());
-  });
+  const appVersion = global.window && window.require('electron').remote.app.getVersion()
 
   return (
     <React.Fragment>
@@ -22,7 +17,7 @@ const About = () => {
           <div className="info text-xl mt-6 text-center">
             <ul>
               <li>
-                Version: {version} (
+                Version: {appVersion} (
                 <a
                   className="underline"
                   href="https://github.com/aperta-principium/Interclip-Desktop/releases"
