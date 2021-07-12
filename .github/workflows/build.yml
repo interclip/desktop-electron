@@ -26,7 +26,7 @@ jobs:
         run: yarn
 
       - name: Build
-        run: yarn build:all && ls
+        run: yarn build:all && ls dist/
 
       - name: Release
         uses: softprops/action-gh-release@v1
