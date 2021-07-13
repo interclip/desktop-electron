@@ -1,8 +1,8 @@
-import { app } from "electron";
+import { app, autoUpdater, dialog, ipcMain } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
 
-require('@electron/remote/main').initialize();
+require("@electron/remote/main").initialize();
 
 const isProd: boolean = process.env.NODE_ENV === "production";
 
@@ -27,6 +27,67 @@ if (isProd) {
       nodeIntegration: true,
     },
   });
+
+  // Change the UI to reflect whether the app is in development mode
+  ipcMain.on("dev-request", (event) => {
+    event.sender.send("dev-reply", !isProd);
+  });
+
+  if (isProd) {
+    const server: string = "https://update.electronjs.org";
+    const feed: string = `${server}/interclip/desktop/${process.platform}-${
+      process.arch
+    }/${app.getVersion()}`;
+
+    autoUpdater.setFeedURL(feed);
+
+    // Check for updates every 30 minutes
+    setInterval(() => {
+      autoUpdater.checkForUpdates();
+    }, 30 * 60 * 1000);
+
+    autoUpdater.on("update-downloaded", (_event, releaseNotes, releaseName) => {
+      const dialogOpts = {
+        type: "info",
+        buttons: ["Restart", "Later"],
+        title: "Application Update",
+        message: process.platform === "win32" ? releaseNotes : releaseName,
+        detail:
+          "A new version has been downloaded. Restart the application to apply the updates.",
+      };
+
+      dialog.showMessageBox(dialogOpts).then((returnValue) => {
+        if (returnValue.response === 0) autoUpdater.quitAndInstall();
+      });
+    });
+
+    ipcMain.on("synchronous-message", (event, arg) => {
+      if (arg === "check-update") {
+        autoUpdater.checkForUpdates();
+      }
+      event.returnValue = "done";
+    });
+
+    autoUpdater.on("update-not-available", () => {
+      const dialogOpts = {
+        type: "info",
+        buttons: ["Retry", "OK"],
+        title: "Application Update",
+        message: "No updates available, you are on the newest build!",
+      };
+
+      dialog.showMessageBox(dialogOpts).then((returnValue) => {
+        if (returnValue.response === 0) autoUpdater.checkForUpdates();
+      });
+    });
+
+    autoUpdater.on("error", (message) => {
+      dialog.showErrorBox(
+        "There was a problem updating the application",
+        message.toString()
+      );
+    });
+  }
 
   // Open new windows in the default browser in Electon.
   mainWindow.webContents.on("new-window", (e: Event, url: string) => {
