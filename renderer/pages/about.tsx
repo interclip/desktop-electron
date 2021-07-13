@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import Menu from "../components/Menu";
 
+import { ipcRenderer } from "electron";
+
 const About = () => {
-  const appVersion = global.window && window.require('electron').remote.app.getVersion()
+  const appVersion =
+    global.window && window.require("electron").remote.app.getVersion();
+
+  const [isDev, setIsDev] = useState(false);
+
+  useEffect(() => {
+    ipcRenderer.send("dev-request", "");
+
+    ipcRenderer.on("dev-reply", function (_event, args: boolean) {
+      setIsDev(args);
+    }); 
+  });
 
   return (
     <React.Fragment>
@@ -51,6 +64,25 @@ const About = () => {
                 <li>Platform: {process.platform}</li>
               </ul>
             </details>
+            {!isDev && (
+              <>
+                <div className="mt-8"></div>
+                <div>
+                  <a
+                    className="p-4 bg-white text-black rounded-xl cursor-pointer"
+                    onClick={() => {
+                      ipcRenderer
+                        .invoke("check-update", "dew-it")
+                        .then((result) => {
+                          alert(result);
+                        });
+                    }}
+                  >
+                    Check for updates
+                  </a>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
