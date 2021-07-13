@@ -4,6 +4,7 @@ import QRCode from "react-qr-code";
 import { clipboard } from "electron";
 import isURL from "validator/lib/isURL";
 import toast, { Toaster } from "react-hot-toast";
+import { useHotkeys } from "react-hotkeys-hook";
 
 import Menu from "../components/Menu";
 
@@ -11,6 +12,11 @@ function Home() {
   const [linkInput, setLinkInput] = useState("");
   const [linkSubmitted, setLinkSubmitted] = useState(false);
   const [code, setCode] = useState("");
+
+  useHotkeys("ctrl+c", () => {
+    toast.success("Copied the code to clipboard");
+    clipboard.writeText(code);
+  });
 
   const submitForm = (link: string = linkInput) => {
     if (isURL(link)) {
@@ -36,6 +42,7 @@ function Home() {
     const readValue = clipboard.readText();
 
     if (isURL(readValue)) {
+      toast.success("Pasted from the clipboard");
       submitForm(readValue);
     }
   }, []);

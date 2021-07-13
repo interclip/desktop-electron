@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import Head from "next/head";
 import toast, { Toaster } from "react-hot-toast";
 import moji from "randmoji";
+import { clipboard } from "electron";
+import { useHotkeys } from "react-hotkeys-hook";
 
 import Menu from "../components/Menu";
 
 function Home() {
   const [codeInput, setCodeInput] = useState("");
   const [codeSubmitted, setCodeSubmitted] = useState(false);
-  // const [loading, setLoading] = useState(false);
   const [resultURL, setURL] = useState("");
+
+  useHotkeys("ctrl+c", () => {
+    toast.success("Copied the URL to clipboard");
+    clipboard.writeText(resultURL);
+  });
+
   return (
     <React.Fragment>
       <Head>
@@ -69,7 +76,7 @@ function Home() {
               <div className="mt-12 text-center">
                 <span className="text-2xl">is the URL</span>
               </div>
-              <div className="mt-6 text-center">
+              <div className="mt-6 text-center w-1/2 break-all">
                 <span className="mt-20 text-4xl">{resultURL}</span>
               </div>
             </>
