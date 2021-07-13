@@ -33,23 +33,17 @@ function Home() {
               toast.error(
                 "Something went wrong in the app! Please submit a bug report"
               );
-              setLinkSubmitted(false);
-              return false;
             case 429:
               toast.error("You are making too many requests!");
-              setLinkSubmitted(false);
-              return false;
             case 500:
             case 501:
             case 502:
             case 503:
             case 504:
               toast.error("Something went wrong! Please try again later");
-              setLinkSubmitted(false);
-              return false;
-            default:
-              return res.json();
           }
+          setLinkSubmitted(false);
+          return false;
         })
         .then((json) => {
           setCode(json.result);
