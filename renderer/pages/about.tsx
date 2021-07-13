@@ -34,7 +34,7 @@ const About = () => {
                 Version: {appVersion} (
                 <a
                   className="underline"
-                  href="https://github.com/aperta-principium/Interclip-Desktop/releases"
+                  href={`https://github.com/aperta-principium/Interclip-Desktop/releases/tag/v${appVersion}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
