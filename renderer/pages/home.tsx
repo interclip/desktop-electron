@@ -33,6 +33,10 @@ function Home() {
               toast.error(
                 "Something went wrong in the app! Please submit a bug report"
               );
+            case 418:
+              toast("Yummy!", {
+                icon: "🫖",
+              });
             case 429:
               toast.error("You are making too many requests!");
             case 500:
