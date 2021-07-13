@@ -9,6 +9,11 @@
   background: white;
 }
 
+input::selection {
+  color: white;
+  background: #157efb;
+}
+
 * {
   font-family: "Lato", Helvetica, sans-serif;
 }
