@@ -42,7 +42,36 @@ function Home() {
                 setCodeSubmitted(true);
 
                 fetch(`https://staging.interclip.app/api/get?code=${codeInput}`)
-                  .then((res) => res.json())
+                  .then((res) => {
+                    switch (res.status) {
+                      case 200:
+                        return res.json();
+                      case 400:
+                        toast.error(
+                          "Something went wrong in the app! Please submit a bug report"
+                        );
+                        setCodeSubmitted(false);
+                        return false;
+                      case 404:
+                        toast.error("The code you entered has not been found");
+                        setCodeSubmitted(false);
+                        return false;
+                      case 429:
+                        toast.error("You are making too many requests!");
+                        setCodeSubmitted(false);
+                        return false;
+                      case 500:
+                      case 501:
+                      case 502:
+                      case 503:
+                      case 504:
+                        toast.error("Something went wrong! Please try again later");
+                        setCodeSubmitted(false);
+                        return false;
+                      default:
+                        return res.json();
+                    }
+                  })
                   .then((json) => {
                     setURL(json.result);
                   })
@@ -69,6 +98,7 @@ function Home() {
               className="receive-bar w-64 border-none rounded text-black text-center"
               placeholder={moji(5)}
               id="search-input"
+              autoFocus={true}
             />
           </form>
           {codeSubmitted && (

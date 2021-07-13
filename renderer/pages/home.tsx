@@ -24,7 +24,33 @@ function Home() {
       setLinkSubmitted(true);
 
       fetch(`https://staging.interclip.app/api/set?url=${link}`)
-        .then((res) => res.json())
+        .then((res) => {
+          // Switch for different status codes
+          switch (res.status) {
+            case 200:
+              return res.json();
+            case 400:
+              toast.error(
+                "Something went wrong in the app! Please submit a bug report"
+              );
+              setLinkSubmitted(false);
+              return false;
+            case 429:
+              toast.error("You are making too many requests!");
+              setLinkSubmitted(false);
+              return false;
+            case 500:
+            case 501:
+            case 502:
+            case 503:
+            case 504:
+              toast.error("Something went wrong! Please try again later");
+              setLinkSubmitted(false);
+              return false;
+            default:
+              return res.json();
+          }
+        })
         .then((json) => {
           setCode(json.result);
         })
