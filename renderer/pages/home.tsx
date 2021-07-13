@@ -98,7 +98,7 @@ function Home() {
               <div className="mt-6 text-center">
                 <QRCode
                   value={`https://interclip.app/${code}`}
-                  bgColor="#157EFB"
+                  bgColor="transparent"
                   fgColor="#fff"
                 />
               </div>
