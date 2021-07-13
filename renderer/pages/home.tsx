@@ -39,11 +39,13 @@ function Home() {
   };
 
   useEffect(() => {
-    const readValue = clipboard.readText();
+    if (!linkSubmitted) {
+      const readValue = clipboard.readText();
 
-    if (isURL(readValue)) {
-      toast.success("Pasted from the clipboard");
-      submitForm(readValue);
+      if (isURL(readValue)) {
+        toast.success("Pasted from the clipboard");
+        submitForm(readValue);
+      }
     }
   }, []);
 
