@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import QRCode from "react-qr-code";
+import { clipboard } from "electron";
+import isURL from "validator/lib/isURL";
 
 import Menu from "../components/Menu";
 
@@ -9,6 +11,28 @@ function Home() {
   const [linkSubmitted, setLinkSubmitted] = useState(false);
   // const [loading, setLoading] = useState(false);
   const [code, setCode] = useState("");
+
+  const submitForm = (link: string = linkInput) => {
+    // Disable the input
+    setLinkSubmitted(true);
+
+    // ToDo: Add link validation
+
+    fetch(`https://staging.interclip.app/api/set?url=${link}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setCode(json.result);
+      })
+      //.catch((err) => {});
+  };
+
+  useEffect(() => {
+    const readValue = clipboard.readText();
+
+    if (isURL(readValue)) {
+      submitForm(readValue);
+    }
+  }, []);
 
   return (
     <React.Fragment>
@@ -25,18 +49,7 @@ function Home() {
             onSubmit={(e) => {
               // Prevent default form behavior
               e.preventDefault();
-
-              // Disable the input
-              setLinkSubmitted(true);
-
-              // ToDo: Add link validation
-
-              fetch(`https://staging.interclip.app/api/set?url=${linkInput}`)
-                .then((res) => res.json())
-                .then((json) => {
-                  setCode(json.result);
-                })
-                .catch((err) => {});
+              submitForm();
               return false;
             }}
             onClick={() => {
@@ -51,7 +64,9 @@ function Home() {
               disabled={linkSubmitted}
               value={linkInput}
               onChange={(e) => setLinkInput(e.target.value)}
-              className={`${linkSubmitted && "cursor-pointer"} urlbar border-solid rounded-3xl text-black text-center`}
+              className={`${
+                linkSubmitted && "cursor-pointer"
+              } urlbar border-solid rounded-3xl text-black text-center`}
               placeholder="https://youtu.be/dQw4w9WgXcQ"
               id="search-input"
             />
@@ -65,7 +80,11 @@ function Home() {
                 <span className="mt-20 text-6xl">{code}</span>
               </div>
               <div className="mt-6 text-center">
-                <QRCode value={`https://interclip.app/${code}`} bgColor="#157EFB" fgColor="#fff" />
+                <QRCode
+                  value={`https://interclip.app/${code}`}
+                  bgColor="#157EFB"
+                  fgColor="#fff"
+                />
               </div>
             </>
           )}
