@@ -44,6 +44,7 @@ const Menu = (): JSX.Element => {
             <a
               title="Report a bug"
               target="_blank"
+              rel="noopener noreferrer"
               href={`https://github.com/interclip/desktop/issues/new?title=bug:&body=${encodeURIComponent(
                 debugInfo
               )}`}
