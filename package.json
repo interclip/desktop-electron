@@ -23,6 +23,7 @@
     "electron-log": "^4.3.5",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.0.0",
+    "next-images": "^1.8.1",
     "randmoji": "^1.1.0",
     "react-hot-toast": "^2.0.0",
     "react-hotkeys-hook": "^3.3.2",

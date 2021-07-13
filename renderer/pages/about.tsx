@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Menu from "../components/Menu";
-
+import Image from 'next/image'
 import { ipcRenderer } from "electron";
+
+import Menu from "../components/Menu";
+import img from "../public/images/logo.png";
 
 const About = () => {
   const appVersion =
@@ -26,7 +28,8 @@ const About = () => {
       <div className="w-full h-screen">
         <Menu />
         <div className="flex flex-col content-center items-center text-white">
-          <h1 className="text-5xl mt-24">About Interclip Desktop</h1>
+        <Image src={img} alt="Picture of the author" width={256} height={256} />
+          <h1 className="text-5xl mt-12">About Interclip Desktop</h1>
           <div className="info text-xl mt-6 text-center">
             <ul>
               <li>
@@ -51,12 +54,22 @@ const About = () => {
                   Privacy policy ↗
                 </a>
               </li>
+              <li>
+                <a
+                  className="underline"
+                  href="https://github.com/interclip/desktop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Source code ↗
+                </a>
+              </li>
             </ul>
 
             <details>
               <summary className="mt-8">Technical details</summary>
 
-              <ul>
+              <ul className="mb-12">
                 <li>Chrome: {process.versions.chrome}</li>
                 <li>Node: {process.versions.node}</li>
                 <li>Electron: {process.versions.electron}</li>
