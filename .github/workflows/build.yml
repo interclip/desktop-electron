@@ -27,6 +27,8 @@ jobs:
 
       - name: Build
         run: yarn build:all && ls dist/
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
       - name: Release
         uses: softprops/action-gh-release@v1

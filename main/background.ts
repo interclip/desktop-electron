@@ -1,6 +1,9 @@
 import { app, autoUpdater, dialog, ipcMain } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
+import * as Sentry from "@sentry/electron";
+
+require('dotenv').config();
 
 require("@electron/remote/main").initialize();
 
@@ -14,6 +17,11 @@ if (isProd) {
 
 (async () => {
   await app.whenReady();
+
+  // Setup sentry
+  if (isProd && process.env.SENTRY_DSN) {
+    Sentry.init({ dsn: process.env.SENTRY_DSN });
+  }
 
   const mainWindow = createWindow("main", {
     minWidth: 800,
