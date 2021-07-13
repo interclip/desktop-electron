@@ -3,27 +3,33 @@ import Head from "next/head";
 import QRCode from "react-qr-code";
 import { clipboard } from "electron";
 import isURL from "validator/lib/isURL";
+import toast, { Toaster } from "react-hot-toast";
 
 import Menu from "../components/Menu";
 
 function Home() {
   const [linkInput, setLinkInput] = useState("");
   const [linkSubmitted, setLinkSubmitted] = useState(false);
-  // const [loading, setLoading] = useState(false);
   const [code, setCode] = useState("");
 
   const submitForm = (link: string = linkInput) => {
-    // Disable the input
-    setLinkSubmitted(true);
+    if (isURL(link)) {
+      // Disable the input
+      setLinkSubmitted(true);
 
-    // ToDo: Add link validation
-
-    fetch(`https://staging.interclip.app/api/set?url=${link}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setCode(json.result);
-      })
-      //.catch((err) => {});
+      fetch(`https://staging.interclip.app/api/set?url=${link}`)
+        .then((res) => res.json())
+        .then((json) => {
+          setCode(json.result);
+        })
+        .catch((err) => {
+          toast.error(err);
+        });
+    } else if (link.length > 0) {
+      toast.error("Invalid URL");
+    } else {
+      toast.error("Please enter a URL");
+    }
   };
 
   useEffect(() => {
@@ -40,6 +46,7 @@ function Home() {
         <title>Interclip</title>
       </Head>
       <div className="w-full h-screen">
+        <Toaster />
         <Menu />
         <div className="flex flex-col content-center items-center text-white">
           {!linkSubmitted && (
