@@ -50,14 +50,18 @@ function Home() {
                         toast.error(
                           "Something went wrong in the app! Please submit a bug report"
                         );
+                        break;
                       case 404:
                         toast.error("The code you entered has not been found");
+                        break;
                       case 418:
                         toast("Yummy!", {
                           icon: "🫖",
                         });
+                        break;
                       case 429:
                         toast.error("You are making too many requests!");
+                        break;
                       case 500:
                       case 501:
                       case 502:
@@ -66,6 +70,7 @@ function Home() {
                         toast.error(
                           "Something went wrong! Please try again later"
                         );
+                        break;
                     }
                     setCodeSubmitted(false);
                     return false;
