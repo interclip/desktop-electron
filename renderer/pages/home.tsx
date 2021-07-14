@@ -33,18 +33,22 @@ function Home() {
               toast.error(
                 "Something went wrong in the app! Please submit a bug report"
               );
+              break;
             case 418:
               toast("Yummy!", {
                 icon: "🫖",
               });
+              break;
             case 429:
               toast.error("You are making too many requests!");
+              break;
             case 500:
             case 501:
             case 502:
             case 503:
             case 504:
               toast.error("Something went wrong! Please try again later");
+              break;
           }
           setLinkSubmitted(false);
           return false;
