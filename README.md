@@ -16,12 +16,25 @@ You can download any release from the [releases page](https://github.com/intercl
 yarn
 ```
 
-### Use it
+### Development server
 
 ```
-# development mode
-$ yarn dev
+yarn dev
+```
 
-# production build
-$ yarn build 
+### Building
+To trigger a build, simply execute:
+
+```
+yarn build
+```
+
+To build for specific platforms, you can use one of these following commands:
+```
+yarn build:win32
+yarn build:win64
+
+yarn build:mac
+
+yarn build:linux
 ```
