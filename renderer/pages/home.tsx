@@ -30,9 +30,9 @@ function Home() {
             case 200:
               return res.json();
             case 400:
-              toast.error(
-                "Something went wrong in the app! Please submit a bug report"
-              );
+              res.json().then((error) => {
+                toast.error(error.result);
+              });
               break;
             case 418:
               toast("Yummy!", {
