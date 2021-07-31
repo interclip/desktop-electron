@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactFragment } from "react";
 import Head from "next/head";
 import { ipcRenderer } from "electron";
 
 import Menu from "../components/Menu";
 
-const About = () => {
+const About = () : React.ReactFragment => {
   const appVersion =
     global.window && window.require("electron").remote.app.getVersion();
 

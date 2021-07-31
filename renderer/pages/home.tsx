@@ -8,7 +8,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 import Menu from "../components/Menu";
 
-function Home() {
+const Home = () : React.ReactFragment => {
   const [linkInput, setLinkInput] = useState("");
   const [linkSubmitted, setLinkSubmitted] = useState(false);
   const [code, setCode] = useState("");

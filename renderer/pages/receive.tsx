@@ -7,7 +7,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 
 import Menu from "../components/Menu";
 
-function Home() {
+const Receive = () : React.ReactFragment => {
   const [codeInput, setCodeInput] = useState("");
   const [codeSubmitted, setCodeSubmitted] = useState(false);
   const [resultURL, setURL] = useState("");
@@ -120,4 +120,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Receive;
