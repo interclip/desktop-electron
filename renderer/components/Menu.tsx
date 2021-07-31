@@ -6,7 +6,7 @@ const MenuItem = (props: {
   children: React.ReactChild | React.ReactFragment | React.ReactPortal;
 }): JSX.Element => {
   return (
-    <Link href={props.href}>
+    <Link href={props.href} passHref>
       <li className="menu-item px-4 py-4 cursor-pointer list-none bg-white rounded-xl dark:text-white">
         {props.children}
       </li>
