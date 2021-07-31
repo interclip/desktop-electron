@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactFragment } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { ipcRenderer } from "electron";
 
