@@ -16,7 +16,7 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@electron/remote": "^1.2.0",
+    "@electron/remote": "^1.2.1",
     "@sentry/electron": "^2.5.1",
     "@types/validator": "^13.6.3",
     "dotenv": "^10.0.0",
