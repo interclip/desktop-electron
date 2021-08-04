@@ -20,7 +20,7 @@
     "@sentry/electron": "^2.5.1",
     "@types/validator": "^13.6.3",
     "dotenv": "^10.0.0",
-    "electron-log": "^4.4.0",
+    "electron-log": "^4.4.1",
     "electron-serve": "^1.1.0",
     "electron-store": "^8.0.0",
     "eslint-config-next": "^11.0.1",
