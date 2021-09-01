@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@electron/remote": "^1.2.1",
-    "@sentry/electron": "^2.5.2",
+    "@sentry/electron": "^2.5.3",
     "@types/validator": "^13.6.3",
     "dotenv": "^10.0.0",
     "electron-log": "^4.4.1",
