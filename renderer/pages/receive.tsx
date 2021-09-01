@@ -41,7 +41,7 @@ const Receive = () : React.ReactFragment => {
                 // Disable the input
                 setCodeSubmitted(true);
 
-                fetch(`https://staging.interclip.app/api/get?code=${codeInput}`)
+                fetch(`https://interclip.app/api/get?code=${codeInput}`)
                   .then((res) => {
                     switch (res.status) {
                       case 200:

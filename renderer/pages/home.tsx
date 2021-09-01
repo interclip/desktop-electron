@@ -23,7 +23,7 @@ const Home = () : React.ReactFragment => {
       // Disable the input
       setLinkSubmitted(true);
 
-      fetch(`https://staging.interclip.app/api/set?url=${link}`)
+      fetch(`https://interclip.app/api/set?url=${link}`)
         .then((res) => {
           // Switch for different status codes
           switch (res.status) {
