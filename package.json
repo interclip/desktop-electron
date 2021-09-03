@@ -35,7 +35,7 @@
     "@types/node": "^16.7.10",
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.0",
-    "autoprefixer": "^10.3.3",
+    "autoprefixer": "^10.3.4",
     "electron": "^13.2.3",
     "electron-builder": "^22.10.5",
     "eslint": "^7.32.0",
