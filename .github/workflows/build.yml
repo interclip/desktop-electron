@@ -5,13 +5,7 @@ on:
 
 jobs:
   release:
-    runs-on: ${{ matrix.os }}
-
-    # Platforms to build on/for
-    strategy:
-      matrix:
-        os: [macos-latest]
-
+    runs-on: macos-11
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
