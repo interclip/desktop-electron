@@ -26,7 +26,7 @@ const About = () : React.ReactFragment => {
       <div className="w-full h-screen">
         <Menu />
         <div className="flex flex-col content-center items-center text-white">
-        <img src="/images/logo.png" alt="Picture of the author" width={256} height={256} />
+        <img src="/images/logo.png" className="mt-5" alt="Interclip's logo" width={256} height={256} />
           <h1 className="text-5xl mt-12">About Interclip Desktop</h1>
           <div className="info text-xl mt-6 text-center">
             <ul>
